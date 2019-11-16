@@ -25,7 +25,6 @@ export function fetchFosterHomes() {
             error => dispatch(handleError(error)),
         )
         .then((data) => {
-            console.log(data),
             dispatch(receivedFosterHomes(data.fosterHomes));
         });
     };

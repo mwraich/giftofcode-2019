@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {sendImportCatsRequest} from '../../containers/Cats/action'
-
+import {fetchFosterHomes} from '../../containers/FosterHomes/actions/index'
 class Cats extends Component {
   async componentDidMount() {
     await this.props.getCats();
@@ -10,7 +10,7 @@ class Cats extends Component {
     return (
       <React.Fragment>
         {this.props.cats.cats}
-        <button onClick={this.props.getCats}>Update</button>
+        <button onClick={this.props.fosterHomes}>Update</button>
       </React.Fragment>
     )
   }
@@ -21,7 +21,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  getCats: () => dispatch(sendImportCatsRequest())
+  getCats: () => dispatch(sendImportCatsRequest()),
+  fosterHomes: () => dispatch(fetchFosterHomes())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cats);

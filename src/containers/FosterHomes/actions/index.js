@@ -1,20 +1,16 @@
-import {
-    HANDLE_ERROR,
-    RECEIVE_FOSTER_HOMES,
-    REQUEST_FOSTER_HOMES,
-} from './types'
+import types from './types'
 
 export const requestFosterHomes = () => ({
-    type: REQUEST_FOSTER_HOMES,
+    type: types.REQUEST_FOSTER_HOMES,
 });
 
 export const receivedFosterHomes = fosterHomes => ({
-    type: RECEIVE_FOSTER_HOMES,
+    type: types.RECEIVE_FOSTER_HOMES,
     fosterHomes,
 });
 
 export const handleError = error => ({
-    type: HANDLE_ERROR,
+    type: types.HANDLE_ERROR,
     error,
 })
 
@@ -29,6 +25,7 @@ export function fetchFosterHomes() {
             error => dispatch(handleError(error)),
         )
         .then((data) => {
+            console.log(data),
             dispatch(receivedFosterHomes(data.fosterHomes));
         });
     };
